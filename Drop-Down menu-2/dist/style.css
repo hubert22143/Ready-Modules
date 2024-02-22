@@ -34,6 +34,11 @@
   width: 100%;
   opacity: 0;
   transition: 0.3s;
+  pointer-events: none;
+}
+.menuList.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 .menuList ul {
   background-color: darkslategrey;
@@ -58,4 +63,10 @@
 }
 .hIcon {
   transition: transform 0.5s ease-in-out;
+}
+.hIcon.active {
+  transform: rotate(180deg);
+}
+li.active {
+  background-color: #ffcc00;
 }
