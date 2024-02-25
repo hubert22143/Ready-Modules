@@ -8,8 +8,9 @@ export function initializeDropDownMenu() {
     const menuHeader = menu.querySelector(".selectedItem");
     const menuWrapper = menu.querySelector(".menuWrapper");
     const hIcon = menuWrapper.querySelector(".hIcon");
+    const ulList = menuList.querySelector('.ulElements');
     selectItem.addEventListener("click", () => {
-      showMenuList(menuList);
+      showMenuList(menuList,ulList);
       if (initialCounter % 2 === 0) {
         hIcon.classList.remove("active");
       } else {
@@ -18,20 +19,20 @@ export function initializeDropDownMenu() {
     });
     liElements.forEach((element) => {
       element.addEventListener("click", (event) => {
-        activateElement(element, menuHeader, menuList);
+        activateElement(element, menuHeader, menuList, hIcon);
       });
     });
   });
 }
-function showMenuList(menuList) {
+function showMenuList(menuList,ulList) {
   initialCounter++;
   const isActive = initialCounter % 2 === 1;
   menuList.style.opacity = isActive ? 1 : 0;
   menuList.classList.toggle("active", isActive);
+  ulList.style.pointerEvents = isActive ? 'auto' : 'none';
 }
 
-function activateElement(element, menuHeader, menuList) {
-  const hIcon = document.querySelector(".hIcon");
+function activateElement(element, menuHeader, menuList, hIcon) {
   const liElements = element.parentElement.querySelectorAll("li");
   hIcon.classList.remove("active");
   liElements.forEach((el) => el.classList.remove("active"));

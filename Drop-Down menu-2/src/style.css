@@ -70,3 +70,7 @@
 li.active {
   background-color: #ffcc00;
 }
+
+.ulElements{
+  pointer-events: none;
+}
